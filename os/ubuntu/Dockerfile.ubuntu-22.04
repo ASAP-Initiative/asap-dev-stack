@@ -1,0 +1,17 @@
+FROM ubuntu:22.04
+
+# Set the working directory
+WORKDIR /app
+
+# Copy any necessary files (if needed)
+# COPY . .
+
+# Install any necessary dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Command to run when starting the container
+CMD ["tail", "-f", "/dev/null"]
