@@ -1,0 +1,10 @@
+FROM fedora:40
+
+RUN dnf -y update && \
+    dnf -y install \
+    curl \
+    git \
+    vim \
+    && dnf clean all
+
+CMD ["tail", "-f", "/dev/null"]

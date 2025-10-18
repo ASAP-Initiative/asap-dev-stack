@@ -1,0 +1,95 @@
+services:
+  asap-cli:
+    build:
+      context: ./asap-cli
+      dockerfile: Dockerfile
+    image: asap-cli:latest
+    container_name: asap-cli
+    working_dir: /ansible
+    entrypoint: ["bash"]
+
+
+  # debian-9:
+  #   build:
+  #     context: ./os/debian
+  #     dockerfile: Dockerfile.debian-9
+  #   container_name: debian-9
+  #   # image name
+  #   image: asap-dev-debian:9
+
+  # debian-10:
+  #   build:
+  #     context: ./os/debian
+  #     dockerfile: Dockerfile.debian-10
+  #   container_name: debian-10
+  #   image: asap-dev-debian:10
+
+  debian-11:
+    build:
+      context: ./os/debian
+      dockerfile: Dockerfile.debian-11
+    container_name: debian-11
+    image: asap-dev-debian:11
+
+  debian-12:
+    build:
+      context: ./os/debian
+      dockerfile: Dockerfile.debian-12
+    container_name: debian-12
+    image: asap-dev-debian:12
+
+  fedora-37:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-37
+    container_name: fedora-37
+    image: asap-dev-fedora:37
+
+  fedora-38:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-38
+    container_name: fedora-38
+    image: asap-dev-fedora:38
+
+  fedora-39:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-39
+    container_name: fedora-39
+    image: asap-dev-fedora:39
+
+  fedora-40:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-40
+    container_name: fedora-40
+    image: asap-dev-fedora:40
+
+  ubuntu-18.04:
+    build:
+      context: ./os/ubuntu
+      dockerfile: Dockerfile.ubuntu-18.04
+    container_name: ubuntu-18.04
+    image: asap-dev-ubuntu:18.04
+
+  ubuntu-20.04:
+    build:
+      context: ./os/ubuntu
+      dockerfile: Dockerfile.ubuntu-20.04
+    container_name: ubuntu-20.04
+    image: asap-dev-ubuntu:20.04
+
+  ubuntu-22.04:
+    build:
+      context: ./os/ubuntu
+      dockerfile: Dockerfile.ubuntu-22.04
+    container_name: ubuntu-22.04
+    image: asap-dev-ubuntu:22.04
+
+  ubuntu-24.04:
+    build:
+      context: ./os/ubuntu
+      dockerfile: Dockerfile.ubuntu-24.04
+    container_name: ubuntu-24.04
+    image: asap-dev-ubuntu:24.04

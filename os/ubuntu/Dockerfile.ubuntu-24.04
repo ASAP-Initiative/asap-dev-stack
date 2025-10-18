@@ -1,0 +1,17 @@
+FROM ubuntu:24.04
+
+# Set the working directory
+WORKDIR /app
+
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application files (if any)
+# COPY . .
+
+# Command to run the application (if any)
+CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,17 @@
+FROM ubuntu:20.04
+
+# Set the working directory
+WORKDIR /app
+
+# Copy any necessary files (if applicable)
+# COPY . .
+
+# Install any necessary packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set the default command
+CMD ["tail", "-f", "/dev/null"]

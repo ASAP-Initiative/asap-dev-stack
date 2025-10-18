@@ -1,0 +1,18 @@
+FROM ubuntu:18.04
+
+# Set the working directory
+WORKDIR /app
+
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    vim \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application files (if any)
+# COPY . .
+
+# Command to run the application (if any)
+CMD ["tail", "-f", "/dev/null"]

@@ -1,0 +1,17 @@
+FROM fedora:37
+
+# Install necessary packages
+RUN dnf install -y \
+    curl \
+    vim \
+    git \
+    && dnf clean all
+
+# Set the working directory
+WORKDIR /app
+
+# Copy any necessary files (if applicable)
+# COPY . .
+
+# Command to run when starting the container
+CMD ["tail", "-f", "/dev/null"]
