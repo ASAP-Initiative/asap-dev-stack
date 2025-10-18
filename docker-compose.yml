@@ -3,93 +3,115 @@ services:
     build:
       context: ./asap-cli
       dockerfile: Dockerfile
+    container_name: asap-cli      
     image: asap-cli:latest
-    container_name: asap-cli
-    working_dir: /ansible
-    entrypoint: ["bash"]
-
-
-  # debian-9:
-  #   build:
-  #     context: ./os/debian
-  #     dockerfile: Dockerfile.debian-9
-  #   container_name: debian-9
-  #   # image name
-  #   image: asap-dev-debian:9
-
-  # debian-10:
-  #   build:
-  #     context: ./os/debian
-  #     dockerfile: Dockerfile.debian-10
-  #   container_name: debian-10
-  #   image: asap-dev-debian:10
 
   debian-11:
     build:
       context: ./os/debian
       dockerfile: Dockerfile.debian-11
-    container_name: debian-11
+    container_name: asap-dev-debian11
+    hostname: debian11
     image: asap-dev-debian:11
+    expose:
+      - "22"
 
   debian-12:
     build:
       context: ./os/debian
       dockerfile: Dockerfile.debian-12
-    container_name: debian-12
+    container_name: asap-dev-debian12
+    hostname: debian12
     image: asap-dev-debian:12
+    expose:
+      - "22"
 
-  fedora-37:
+  debian-13:
     build:
-      context: ./os/fedora
-      dockerfile: Dockerfile.fedora-37
-    container_name: fedora-37
-    image: asap-dev-fedora:37
-
-  fedora-38:
-    build:
-      context: ./os/fedora
-      dockerfile: Dockerfile.fedora-38
-    container_name: fedora-38
-    image: asap-dev-fedora:38
+      context: ./os/debian
+      dockerfile: Dockerfile.debian-13
+    container_name: asap-dev-debian13
+    hostname: debian13
+    image: asap-dev-debian:13
+    expose:
+      - "22"
 
   fedora-39:
     build:
       context: ./os/fedora
       dockerfile: Dockerfile.fedora-39
-    container_name: fedora-39
+    container_name: asap-dev-fedora39
+    hostname: fedora39
     image: asap-dev-fedora:39
+    expose:
+      - "22"
 
   fedora-40:
     build:
       context: ./os/fedora
       dockerfile: Dockerfile.fedora-40
-    container_name: fedora-40
+    container_name: asap-dev-fedora40
+    hostname: fedora40
     image: asap-dev-fedora:40
+    expose:
+      - "22"
+
+  fedora-41:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-41
+    container_name: asap-dev-fedora41
+    hostname: fedora41
+    image: asap-dev-fedora:41
+    expose:
+      - "22"
+
+  fedora-42:
+    build:
+      context: ./os/fedora
+      dockerfile: Dockerfile.fedora-42
+    container_name: asap-dev-fedora42
+    hostname: fedora42
+    image: asap-dev-fedora:42
+    expose:
+      - "22"
 
   ubuntu-18.04:
     build:
       context: ./os/ubuntu
       dockerfile: Dockerfile.ubuntu-18.04
-    container_name: ubuntu-18.04
+    container_name: asap-dev-ubuntu1804
+    hostname: ubuntu1804 
     image: asap-dev-ubuntu:18.04
+    expose:
+      - "22"
 
   ubuntu-20.04:
     build:
       context: ./os/ubuntu
       dockerfile: Dockerfile.ubuntu-20.04
-    container_name: ubuntu-20.04
+    container_name: asap-dev-ubuntu2004
+    hostname: ubuntu2004
     image: asap-dev-ubuntu:20.04
+    expose:
+      - "22"
 
   ubuntu-22.04:
     build:
       context: ./os/ubuntu
       dockerfile: Dockerfile.ubuntu-22.04
-    container_name: ubuntu-22.04
+    container_name: asap-dev-ubuntu2204
+    hostname: ubuntu2204
     image: asap-dev-ubuntu:22.04
+    expose:
+      - "22"
 
   ubuntu-24.04:
     build:
       context: ./os/ubuntu
       dockerfile: Dockerfile.ubuntu-24.04
-    container_name: ubuntu-24.04
+    container_name: asap-dev-ubuntu2404
+    hostname: ubuntu2404
     image: asap-dev-ubuntu:24.04
+    expose:
+      - "22"

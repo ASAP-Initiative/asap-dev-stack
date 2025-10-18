@@ -1,11 +1,26 @@
 FROM debian:12
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    curl \
-    git \
-    vim \
+RUN apt-get update \
+    && apt-get install -y openssh-server sudo supervisor \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-CMD ["tail", "-f", "/dev/null"]
+# Create 'asap' user with sudo privileges
+RUN adduser --system --disabled-password --shell /bin/bash --home /home/asap --group asap \
+    && mkdir -p /home/asap/.ssh \
+    && usermod -aG sudo asap \
+    && sed -i -E 's/%sudo\s+ALL=\(ALL:ALL\) ALL/%sudo ALL=\(ALL:ALL\) NOPASSWD:ALL/g' /etc/sudoers
+
+# Add SSH public key for 'asap' user
+COPY id_ed25519.pub /home/asap/.ssh/authorized_keys
+RUN chown -R asap:asap /home/asap/ \
+    && chmod 700 /home/asap/.ssh \
+    && chmod 600 /home/asap/.ssh/authorized_keys
+
+# Requirements for SSH daemon
+RUN mkdir /run/sshd && chmod 0755 /run/sshd
+
+# Copy supervisord configuration
+COPY supervisord.conf /etc/supervisord.conf
+
+ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]

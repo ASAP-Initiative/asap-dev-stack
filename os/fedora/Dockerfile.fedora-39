@@ -1,17 +1,27 @@
 FROM fedora:39
 
-# Install necessary packages
-RUN dnf install -y \
-    vim \
-    curl \
-    git \
+RUN dnf -y update \
+    && dnf -y install openssh-server sudo supervisor \
     && dnf clean all
 
-# Set the working directory
-WORKDIR /app
+# Create 'asap' user with sudo privileges
+RUN groupadd --system asap \
+    && groupadd --system sudo \
+    && adduser --system --shell /bin/bash --home /home/asap -g asap asap \
+    && mkdir -p /home/asap/.ssh \
+    && usermod -aG sudo asap \
+    && sed -i -E 's/%sudo\s+ALL=\(ALL:ALL\) ALL/%sudo ALL=\(ALL:ALL\) NOPASSWD:ALL/g' /etc/sudoers
 
-# Copy any necessary files (if applicable)
-# COPY . .
+# Add SSH public key for 'asap' user
+COPY id_ed25519.pub /home/asap/.ssh/authorized_keys
+RUN chown -R asap:asap /home/asap/ \
+    && chmod 700 /home/asap/.ssh \
+    && chmod 600 /home/asap/.ssh/authorized_keys
 
-# Command to run when the container starts
-CMD ["tail", "-f", "/dev/null"]
+# Requirements for SSH daemon
+RUN ssh-keygen -A
+
+# Copy supervisord configuration
+COPY supervisord.conf /etc/supervisord.conf
+
+ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
