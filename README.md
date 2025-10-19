@@ -24,9 +24,9 @@ This development stack includes :
 ## The Stack
 
 | Service | Container name | Hostname | Image | Exposed ports | Build context / Dockerfile |
-|---|---:|---|---|---:|---|
+|---|----|---|---|----|---|
 | asap-cli | asap-dev-asap-cli | asap-cli | asap-cli:latest | (none) | ./asap-cli / [Dockerfile](./asap-cli/Dockerfile) |
-| kafka-broker | asap-dev-kafka-broker | kafka-broker | apache/kafka-native:latest | 9092, 29092 | (image) |
+| kafka-broker | asap-dev-kafka-broker | kafka-broker | apache/kafka-native:latest | 9092 | (image) |
 | debian11 | asap-dev-debian11 | debian11 | asap-dev-debian:11 | 22 | ./os/debian / [Dockerfile.debian11](./os/debian/Dockerfile.debian11) |
 | debian12 | asap-dev-debian12 | debian12 | asap-dev-debian:12 | 22 | ./os/debian / [Dockerfile.debian12](./os/debian/Dockerfile.debian12) |
 | debian13 | asap-dev-debian13 | debian13 | asap-dev-debian:13 | 22 | ./os/debian / [Dockerfile.debian13](./os/debian/Dockerfile.debian13) |
