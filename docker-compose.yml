@@ -3,113 +3,134 @@ services:
     build:
       context: ./asap-cli
       dockerfile: Dockerfile
-    container_name: asap-cli      
+    container_name: asap-dev-asap-cli
+    hostname: asap-cli 
     image: asap-cli:latest
+    environment:
+      ASAP_LOGGER_ENABLE: true
+      ASAP_LOGGER_KAFKA_BROKERS: kafka-broker:9092
 
-  debian-11:
+  kafka-broker:
+    container_name: asap-dev-kafka-broker
+    hostname: kafka-broker
+    image: apache/kafka-native:latest
+    # environment:
+      # KAFKA_NODE_ID: 1
+      # KAFKA_PROCESS_ROLES: broker,controller
+      # KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
+      # KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      # KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      # KAFKA_CONTROLLER_QUORUM_VOTERS: 1@localhost:9093
+      # KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      # KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
+    expose:
+      - "9092"
+      - "29092"
+
+  debian11:
     build:
       context: ./os/debian
-      dockerfile: Dockerfile.debian-11
+      dockerfile: Dockerfile.debian11
     container_name: asap-dev-debian11
     hostname: debian11
     image: asap-dev-debian:11
     expose:
       - "22"
 
-  debian-12:
+  debian12:
     build:
       context: ./os/debian
-      dockerfile: Dockerfile.debian-12
+      dockerfile: Dockerfile.debian12
     container_name: asap-dev-debian12
     hostname: debian12
     image: asap-dev-debian:12
     expose:
       - "22"
 
-  debian-13:
+  debian13:
     build:
       context: ./os/debian
-      dockerfile: Dockerfile.debian-13
+      dockerfile: Dockerfile.debian13
     container_name: asap-dev-debian13
     hostname: debian13
     image: asap-dev-debian:13
     expose:
       - "22"
 
-  fedora-39:
+  fedora39:
     build:
       context: ./os/fedora
-      dockerfile: Dockerfile.fedora-39
+      dockerfile: Dockerfile.fedora39
     container_name: asap-dev-fedora39
     hostname: fedora39
     image: asap-dev-fedora:39
     expose:
       - "22"
 
-  fedora-40:
+  fedora40:
     build:
       context: ./os/fedora
-      dockerfile: Dockerfile.fedora-40
+      dockerfile: Dockerfile.fedora40
     container_name: asap-dev-fedora40
     hostname: fedora40
     image: asap-dev-fedora:40
     expose:
       - "22"
 
-  fedora-41:
+  fedora41:
     build:
       context: ./os/fedora
-      dockerfile: Dockerfile.fedora-41
+      dockerfile: Dockerfile.fedora41
     container_name: asap-dev-fedora41
     hostname: fedora41
     image: asap-dev-fedora:41
     expose:
       - "22"
 
-  fedora-42:
+  fedora42:
     build:
       context: ./os/fedora
-      dockerfile: Dockerfile.fedora-42
+      dockerfile: Dockerfile.fedora42
     container_name: asap-dev-fedora42
     hostname: fedora42
     image: asap-dev-fedora:42
     expose:
       - "22"
 
-  ubuntu-18.04:
+  ubuntu1804:
     build:
       context: ./os/ubuntu
-      dockerfile: Dockerfile.ubuntu-18.04
+      dockerfile: Dockerfile.ubuntu1804
     container_name: asap-dev-ubuntu1804
     hostname: ubuntu1804 
     image: asap-dev-ubuntu:18.04
     expose:
       - "22"
 
-  ubuntu-20.04:
+  ubuntu2004:
     build:
       context: ./os/ubuntu
-      dockerfile: Dockerfile.ubuntu-20.04
+      dockerfile: Dockerfile.ubuntu2004
     container_name: asap-dev-ubuntu2004
     hostname: ubuntu2004
     image: asap-dev-ubuntu:20.04
     expose:
       - "22"
 
-  ubuntu-22.04:
+  ubuntu2204:
     build:
       context: ./os/ubuntu
-      dockerfile: Dockerfile.ubuntu-22.04
+      dockerfile: Dockerfile.ubuntu2204
     container_name: asap-dev-ubuntu2204
     hostname: ubuntu2204
     image: asap-dev-ubuntu:22.04
     expose:
       - "22"
 
-  ubuntu-24.04:
+  ubuntu2404:
     build:
       context: ./os/ubuntu
-      dockerfile: Dockerfile.ubuntu-24.04
+      dockerfile: Dockerfile.ubuntu2404
     container_name: asap-dev-ubuntu2404
     hostname: ubuntu2404
     image: asap-dev-ubuntu:24.04

@@ -32,3 +32,7 @@ ENV ANSIBLE_HOST_KEY_CHECKING=False
 
 USER ansible
 WORKDIR /home/ansible
+
+RUN pip install confluent_kafka
+
+ENV ASAP_LOGGER_KAFKA_BROKERS=kafka-broker:9092
