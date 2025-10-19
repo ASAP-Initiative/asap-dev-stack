@@ -10,6 +10,40 @@ services:
       ASAP_LOGGER_ENABLE: true
       ASAP_LOGGER_KAFKA_BROKERS: kafka-broker:9092
 
+  asap-db:
+    image: postgres:17
+    container_name: asap-db
+    hostname: asap-db
+    environment:
+      POSTGRES_USER: asap
+      POSTGRES_PASSWORD: asap_pwd
+      POSTGRES_DB: asap
+    volumes:
+      - asap-db-data:/var/lib/postgresql/data
+    expose:
+      - "5432"
+    restart: unless-stopped
+
+  asap-kafka-consumer:
+    build:
+      context: ../asap-api
+      dockerfile: Dockerfile
+    container_name: asap-dev-asap-kafka-consumer
+    hostname: asap-kafka-consumer
+    image: asap-api:latest
+    environment:
+      ASAP_DB_HOST: asap-db
+      ASAP_DB_PORT: 5432
+      ASAP_DB_NAME: asap
+      ASAP_DB_USER: asap
+      ASAP_DB_PASSWORD: asap_pwd
+      ASAP_KAFKA_BROKERS: kafka-broker:9092
+    ports:
+      - "8000:8000"
+    depends_on:
+      - asap-db
+      - kafka-broker
+
   kafka-broker:
     container_name: asap-dev-kafka-broker
     hostname: kafka-broker
@@ -133,3 +167,6 @@ services:
     image: asap-dev-ubuntu:24.04
     expose:
       - "22"
+
+volumes:
+  asap-db-data:

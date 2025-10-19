@@ -26,7 +26,9 @@ This development stack includes :
 | Service | Container name | Hostname | Image | Exposed ports | Build context / Dockerfile |
 |---|----|---|---|----|---|
 | asap-cli | asap-dev-asap-cli | asap-cli | asap-cli:latest | (none) | ./asap-cli / [Dockerfile](./asap-cli/Dockerfile) |
-| kafka-broker | asap-dev-kafka-broker | kafka-broker | apache/kafka-native:latest | 9092 | (image) |
+| asap-kafka-consumer | asap-dev-asap-kafka-consumer | asap-kafka-consumer | asap-api:latest | 8000 | ./asap-api / [Dockerfile](./asap-api/Dockerfile) |
+| asap-db | asap-db | asap-db | postgres:15 | 5432 | (image) |
+| kafka-broker | asap-dev-kafka-broker | kafka-broker | apache/kafka:latest | 9092 | (image) |
 | debian11 | asap-dev-debian11 | debian11 | asap-dev-debian:11 | 22 | ./os/debian / [Dockerfile.debian11](./os/debian/Dockerfile.debian11) |
 | debian12 | asap-dev-debian12 | debian12 | asap-dev-debian:12 | 22 | ./os/debian / [Dockerfile.debian12](./os/debian/Dockerfile.debian12) |
 | debian13 | asap-dev-debian13 | debian13 | asap-dev-debian:13 | 22 | ./os/debian / [Dockerfile.debian13](./os/debian/Dockerfile.debian13) |
@@ -39,6 +41,25 @@ This development stack includes :
 | ubuntu2204 | asap-dev-ubuntu2204 | ubuntu2204 | asap-dev-ubuntu:22.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu2204](./os/ubuntu/Dockerfile.ubuntu2204) |
 | ubuntu2404 | asap-dev-ubuntu2404 | ubuntu2404 | asap-dev-ubuntu:24.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu2404](./os/ubuntu/Dockerfile.ubuntu2404) |
 
+## The Workflow
+
+```mermaid
+graph TD
+  A[Ansible plugin] -->|publish to topic 'asap'| K[**Kafka broker**<br>**topic:** '*asap*']
+  K -->|message delivered| C[FastAPI consumer<br>asap-api]
+  C -->|INSERT into messages table| DB[PostgreSQL<br>asap-db]
+  C -->|exposes REST endpoints| CL[Client / Dashboard]
+
+  subgraph KafkaDetails
+    K
+  end
+
+  style A fill:#f9f,stroke:#333,stroke-width:1px
+  style K fill:#ffeb99,stroke:#333,stroke-width:1px
+  style C fill:#9fe6a0,stroke:#333,stroke-width:1px
+  style DB fill:#9fc5e8,stroke:#333,stroke-width:1px
+  style CL fill:#eee,stroke:#333,stroke-width:1px
+```
 
 ## Getting Started
 
