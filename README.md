@@ -20,7 +20,31 @@ This development stack includes :
   - **[ubuntu/](os/ubuntu/)**: Dockerfiles for Ubuntu LTS versions (18.04, 20.04, 22.04, 24.04).
 - **[README.md](README.md)**: Documentation for the project.
 
+
+## The Stack
+
+| Service | Container name | Hostname | Image | Exposed ports | Build context / Dockerfile |
+|---|---:|---|---|---:|---|
+| asap-cli | asap-dev-asap-cli | asap-cli | asap-cli:latest | (none) | ./asap-cli / [Dockerfile](./asap-cli/Dockerfile) |
+| kafka-broker | asap-dev-kafka-broker | kafka-broker | apache/kafka-native:latest | 9092, 29092 | (image) |
+| debian11 | asap-dev-debian11 | debian11 | asap-dev-debian:11 | 22 | ./os/debian / [Dockerfile.debian11](./os/debian/Dockerfile.debian11) |
+| debian12 | asap-dev-debian12 | debian12 | asap-dev-debian:12 | 22 | ./os/debian / [Dockerfile.debian12](./os/debian/Dockerfile.debian12) |
+| debian13 | asap-dev-debian13 | debian13 | asap-dev-debian:13 | 22 | ./os/debian / [Dockerfile.debian13](./os/debian/Dockerfile.debian13) |
+| fedora39 | asap-dev-fedora39 | fedora39 | asap-dev-fedora:39 | 22 | ./os/fedora / [Dockerfile.fedora39](./os/fedora/Dockerfile.fedora39) |
+| fedora40 | asap-dev-fedora40 | fedora40 | asap-dev-fedora:40 | 22 | ./os/fedora / [Dockerfile.fedora40](./os/fedora/Dockerfile.fedora40) |
+| fedora41 | asap-dev-fedora41 | fedora41 | asap-dev-fedora:41 | 22 | ./os/fedora / [Dockerfile.fedora41](./os/fedora/Dockerfile.fedora41) |
+| fedora42 | asap-dev-fedora42 | fedora42 | asap-dev-fedora:42 | 22 | ./os/fedora / [Dockerfile.fedora42](./os/fedora/Dockerfile.fedora42) |
+| ubuntu1804 | asap-dev-ubuntu1804 | ubuntu1804 | asap-dev-ubuntu:18.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu1804](./os/ubuntu/Dockerfile.ubuntu1804) |
+| ubuntu2004 | asap-dev-ubuntu2004 | ubuntu2004 | asap-dev-ubuntu:20.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu2004](./os/ubuntu/Dockerfile.ubuntu2004) |
+| ubuntu2204 | asap-dev-ubuntu2204 | ubuntu2204 | asap-dev-ubuntu:22.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu2204](./os/ubuntu/Dockerfile.ubuntu2204) |
+| ubuntu2404 | asap-dev-ubuntu2404 | ubuntu2404 | asap-dev-ubuntu:24.04 | 22 | ./os/ubuntu / [Dockerfile.ubuntu2404](./os/ubuntu/Dockerfile.ubuntu2404) |
+
+
 ## Getting Started
+
+0. **Prerequisites**:
+
+   - Ensure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine.
 
 1. **Clone the Repository**: 
 
@@ -44,7 +68,7 @@ This development stack includes :
 4. **Play with the stack**: 
 
    ```bash
-   docker exec -it asap-cli bash -c 'ansible --version && ansible all -m ping'
+   docker exec -it asap-dev-asap-cli bash -c 'ansible --version && ansible all -m ping'
    ansible [core 2.16.14]
       config file = None
       configured module search path = ['/home/ansible/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
