@@ -70,7 +70,10 @@ graph TD
 1. **Clone the Repository**: 
 
    ```bash
-   git clone https://github.com/ASAP-Initiative/asap-dev-stack
+   # Clone asap-api in order to build the asap-kafka-consumer image
+   git clone https://github.com/ASAP-Initiative/asap-api.git
+
+   git clone https://github.com/ASAP-Initiative/asap-dev-stack.git
    cd asap-dev-stack
    ```
 
