@@ -1,0 +1,22 @@
+---
+# Hadolint configuration for Dockerfile linting
+# https://github.com/hadolint/hadolint
+
+ignored:
+  # DL3008: Pin versions in apt get install
+  # Pinning apt package versions can be too restrictive and break builds
+  - DL3008
+  # DL3013: Pin versions in pip
+  # We allow unpinned pip packages for flexibility, but encourage version pinning in production
+  - DL3013
+  # DL3015: Avoid additional packages by specifying --no-install-recommends
+  # This is already handled in some Dockerfiles, but not critical for all
+  - DL3015
+  # DL3042: Avoid use of cache directory with pip
+  # Already using --no-cache-dir in most places, not critical
+  - DL3042
+  # DL3041: Specify version with dnf install
+  # Pinning dnf package versions can be too restrictive and break builds
+  - DL3041
+
+failure-threshold: warning
