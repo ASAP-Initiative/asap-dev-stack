@@ -35,6 +35,27 @@ Thanks for your interest in contributing. This document explains how to propose 
   - App services: asap-cli, asap-kafka-consumer, asap-db, kafka-broker
 - README service table must match docker-compose.yml (names, images, ports, Dockerfile links).
 
+### Linting
+
+This project uses automated linting to maintain code quality:
+
+- **Dockerfiles**: Linted with [hadolint](https://github.com/hadolint/hadolint)
+- **docker-compose.yml**: Linted with [yamllint](https://yamllint.readthedocs.io/)
+
+To run linters locally:
+
+```bash
+# Run all linters
+make lint
+
+# Or run them individually
+make lint-dockerfiles
+make lint-compose
+```
+
+The linters are configured via `.hadolint.yaml` and `.yamllint.yaml` configuration files.
+CI/CD will automatically run these linters on all pull requests.
+
 ## Commit messages and branches
 
 - Use feature branches: feature/<short-name>, fix/<short-name>, docs/<short-name>.
@@ -51,11 +72,13 @@ Thanks for your interest in contributing. This document explains how to propose 
 1. Fork and create a branch.
 2. Make focused changes with clear commits.
 3. Update docs (README tables, diagrams) if behavior changes.
-4. Ensure docker compose builds: docker compose build.
-5. Ensure stack starts: `docker compose up -d` and basic health checks.
-6. Open PR with:
+4. Run linters: `make lint` to ensure code quality.
+5. Ensure docker compose builds: `docker compose build`.
+6. Ensure stack starts: `docker compose up -d` and basic health checks.
+7. Open PR with:
    - Motivation and context
    - Checklist:
+     - [ ] Linters pass (`make lint`)
      - [ ] docker compose builds
      - [ ] README updated
      - [ ] New files documented

@@ -1,0 +1,35 @@
+---
+# yamllint configuration for docker-compose.yml and other YAML files
+# https://yamllint.readthedocs.io/
+
+extends: default
+
+rules:
+  # Allow documents to not start with ---
+  document-start: disable
+  
+  # Set line length to 120 characters
+  line-length:
+    max: 120
+    level: warning
+  
+  # Allow trailing spaces (will be fixed but not fail the build)
+  trailing-spaces: enable
+  
+  # Indentation settings
+  indentation:
+    spaces: 2
+    indent-sequences: true
+  
+  # Comments settings
+  comments:
+    min-spaces-from-content: 1
+  
+  # Allow truthy values for GitHub Actions
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+  
+  # More lenient brackets for GitHub Actions arrays
+  brackets:
+    max-spaces-inside: 1
+
