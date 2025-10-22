@@ -11,7 +11,7 @@ docker compose -f "$COMPOSE_FILE" config --quiet
 echo "docker-compose.yml linting passed."
 
 # Foreach Dockerfile in the os/ directory, run hadolint
-DOCKERFILES=$(find $SCRIPT_DIR/../os/ -name Dockerfile*)
+DOCKERFILES=$(find "$SCRIPT_DIR"/../os/ -name Dockerfile*)
 for DOCKERFILE in $DOCKERFILES; do
     echo "Linting $DOCKERFILE ..."
     if [ -f "$DOCKERFILE" ]; then
