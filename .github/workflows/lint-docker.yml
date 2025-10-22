@@ -1,4 +1,6 @@
 name: Lint Dockerfiles and docker-compose
+permissions:
+  contents: read
 
 on:
   push:
