@@ -6,8 +6,6 @@ Thanks for your interest in contributing. This document explains how to propose 
 
 - [How to ask questions](#how-to-ask-questions)
 - [Reporting bugs and requesting features](#reporting-bugs-and-requesting-features)
-- [Development setup](#development-setup)
-- [Running the stack](#running-the-stack)
 - [Code style and conventions](#code-style-and-conventions)
 - [Commit messages and branches](#commit-messages-and-branches)
 - [Pull request process](#pull-request-process)
