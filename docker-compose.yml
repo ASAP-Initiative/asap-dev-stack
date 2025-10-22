@@ -1,10 +1,11 @@
+---
 services:
   asap-cli:
     build:
       context: ./asap-cli
       dockerfile: Dockerfile
     container_name: asap-dev-asap-cli
-    hostname: asap-cli 
+    hostname: asap-cli
     image: asap-cli:latest
     environment:
       ASAP_LOGGER_ENABLE: true
@@ -133,7 +134,7 @@ services:
       context: ./os/ubuntu
       dockerfile: Dockerfile.ubuntu1804
     container_name: asap-dev-ubuntu1804
-    hostname: ubuntu1804 
+    hostname: ubuntu1804
     image: asap-dev-ubuntu:18.04
     expose:
       - "22"

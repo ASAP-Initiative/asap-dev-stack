@@ -1,0 +1,16 @@
+---
+# Hadolint configuration file
+ignored:
+  - DL3008  # Pin versions in apt-get install
+  - DL3015  # Avoid additional packages by specifying --no-install-recommends
+  - DL3041  # Specify version with dnf install -y <package>-<version>
+failure-threshold: warning
+
+override:
+  warning:
+    - DL3049  # Missing label-schema
+
+label-schema:
+  org.opencontainers.image.title: text
+  org.opencontainers.image.description: text
+  org.opencontainers.image.source: url

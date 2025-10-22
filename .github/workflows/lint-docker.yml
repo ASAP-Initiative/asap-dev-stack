@@ -1,0 +1,27 @@
+name: Lint Dockerfiles and docker-compose
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yamllint
+
+      - name: Lint YAML files
+        run: |
+          yamllint -c dev-stack/.yamllint.yml .
+
+      - name: Lint Dockerfiles and docker-compose
+        run: |
+          cd dev-stack/scripts
+          chmod +x lint.sh
+          ./lint.sh
