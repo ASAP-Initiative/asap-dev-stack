@@ -15,7 +15,7 @@ DOCKERFILES=$(find "$SCRIPT_DIR"/../os/ -name Dockerfile*)
 for DOCKERFILE in $DOCKERFILES; do
     echo "Linting $DOCKERFILE ..."
     if [ -f "$DOCKERFILE" ]; then
-        docker run --rm -i -v "$HADOLINT_CONFIG_FILE:/.config/hadolint.yaml:ro" hadolint/hadolint < $DOCKERFILE
+        docker run --rm -i -v "$HADOLINT_CONFIG_FILE:/.config/hadolint.yaml:ro" hadolint/hadolint < "$DOCKERFILE"
         echo "Linted $DOCKERFILE successfully."
     else
         echo "No Dockerfile found at $DOCKERFILE, skipping."
