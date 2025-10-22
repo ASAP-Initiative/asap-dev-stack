@@ -1,5 +1,7 @@
 # ASAP Initiative Development Stack
 
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ASAP-Initiative/asap-dev-stack/badge)](https://scorecard.dev/viewer/?uri=github.com/ASAP-Initiative/asap-dev-stack)
+
 This project provides a Docker Compose setup for building and running containers for the [ASAP Initiative](https://github.com/ASAP-Initiative) development stack. 
 
 This development stack includes :
