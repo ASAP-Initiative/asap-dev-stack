@@ -18,7 +18,7 @@ jobs:
 
       - name: Lint YAML files
         run: |
-          yamllint -c dev-stack/.yamllint.yml .
+          yamllint -c scripts/.yamllint.yml .
 
       - name: Lint Dockerfiles and docker-compose
         run: |
