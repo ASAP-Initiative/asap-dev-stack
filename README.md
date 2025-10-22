@@ -73,7 +73,10 @@ graph TD
 1. **Clone the Repository**: 
 
    ```bash
-   git clone https://github.com/ASAP-Initiative/asap-dev-stack
+   # Clone asap-api in order to build the asap-kafka-consumer image
+   git clone https://github.com/ASAP-Initiative/asap-api.git
+
+   git clone https://github.com/ASAP-Initiative/asap-dev-stack.git
    cd asap-dev-stack
    ```
 
@@ -155,7 +158,7 @@ In order to work with **Ubuntu 18.04 (with Python 3.6)**, we cannot install `ans
 
 ## Contributing
 
-Feel free to submit issues or pull requests for improvements or additional features. 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to this project.
 
 ## License
 

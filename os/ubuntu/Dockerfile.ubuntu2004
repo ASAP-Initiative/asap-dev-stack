@@ -24,3 +24,7 @@ RUN mkdir /var/run/sshd && chmod 0755 /var/run/sshd
 COPY supervisord.conf /etc/supervisord.conf
 
 ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
+
+LABEL org.opencontainers.image.title="ASAP Dev Stack Ubuntu 20.04 Base Image"
+LABEL org.opencontainers.image.description="Base Ubuntu 20.04 image for ASAP Dev Stack with SSH and sudo setup"
+LABEL org.opencontainers.image.source="https://github.com/ASAP-Initiative/asap-dev-stack.git"

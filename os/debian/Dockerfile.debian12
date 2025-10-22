@@ -24,3 +24,7 @@ RUN mkdir /run/sshd && chmod 0755 /run/sshd
 COPY supervisord.conf /etc/supervisord.conf
 
 ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
+
+LABEL org.opencontainers.image.title="ASAP Dev Stack Debian 12 Base Image"
+LABEL org.opencontainers.image.description="Base Debian 12 image for ASAP Dev Stack with SSH and sudo setup"
+LABEL org.opencontainers.image.source="https://github.com/ASAP-Initiative/asap-dev-stack.git"

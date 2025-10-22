@@ -21,3 +21,7 @@ RUN chown -R asap:asap /home/asap/ \
 COPY supervisord.conf /etc/supervisord.conf
 
 ENTRYPOINT [ "/usr/bin/supervisord", "-c", "/etc/supervisord.conf" ]
+
+LABEL org.opencontainers.image.title="ASAP Dev Stack Debian 13 Base Image"
+LABEL org.opencontainers.image.description="Base Debian 13 image for ASAP Dev Stack with SSH and sudo setup"
+LABEL org.opencontainers.image.source="https://github.com/ASAP-Initiative/asap-dev-stack.git"
