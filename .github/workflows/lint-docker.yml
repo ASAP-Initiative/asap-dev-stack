@@ -22,6 +22,6 @@ jobs:
 
       - name: Lint Dockerfiles and docker-compose
         run: |
-          cd dev-stack/scripts
+          cd scripts
           chmod +x lint.sh
           ./lint.sh
