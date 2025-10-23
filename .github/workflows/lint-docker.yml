@@ -1,3 +1,4 @@
+---
 name: Lint Dockerfiles and docker-compose
 
 on:
