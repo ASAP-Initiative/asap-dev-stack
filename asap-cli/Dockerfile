@@ -1,4 +1,4 @@
-FROM python:3.12-slim@sha256:b03eed4944bc758029e0506ec41acb6a4be6d1b2b875d6e04ac4759db343a370
+FROM python:3.12-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV HOME=/home/ansible
