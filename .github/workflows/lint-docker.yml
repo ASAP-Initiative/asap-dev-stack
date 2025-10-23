@@ -19,10 +19,10 @@ jobs:
 
       - name: Lint YAML files
         run: |
-          yamllint -c dev-stack/.yamllint.yml .
+          yamllint -c scripts/.yamllint.yml docker-compose.yml
 
       - name: Lint Dockerfiles and docker-compose
         run: |
-          cd dev-stack/scripts
+          cd scripts
           chmod +x lint.sh
           ./lint.sh
