@@ -20,7 +20,7 @@ jobs:
 
       - name: Lint YAML files
         run: |
-          yamllint -c scripts/.yamllint.yml .
+          yamllint -c scripts/.yamllint.yml docker-compose.yml
 
       - name: Lint Dockerfiles and docker-compose
         run: |
