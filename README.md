@@ -156,6 +156,28 @@ graph TD
 
 In order to work with **Ubuntu 18.04 (with Python 3.6)**, we cannot install `ansible-core > 2.16` ([ansible-core support matrix](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix)), so we use `ansible==9.13` ([Ansible community chnagelogs](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix)).
 
+## Development
+
+### Code Quality and Linting
+
+This project uses automated linting to maintain code quality:
+
+- **Dockerfiles**: Linted with [hadolint](https://github.com/hadolint/hadolint)
+- **docker-compose.yml**: Linted with [yamllint](https://yamllint.readthedocs.io/)
+
+To run linters locally:
+
+```bash
+# Run all linters
+make lint
+
+# Or run them individually
+make lint-dockerfiles
+make lint-compose
+```
+
+CI/CD automatically runs these linters on all pull requests.
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on contributing to this project.
